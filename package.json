@@ -4,7 +4,7 @@
   "description": "loveX",
   "main": "index.js",
   "scripts": {
-    "test": "Jest"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
