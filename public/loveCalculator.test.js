@@ -1,5 +1,5 @@
 // loveCalculator.test.js
-const { calculateLovePercentage } = require('./loveCalculator'); // Assurez-vous d'exporter la fonction depuis loveCalculator.js
+const { getLovePercentageSync } = require('./loveCalculator'); // Assurez-vous d'exporter la fonction depuis loveCalculator.js
 
 // Mock de document.getElementById pour simuler le DOM
 document.getElementById = jest.fn((id) => {
@@ -13,6 +13,6 @@ test('le pourcentage d\'amour entre "melvin" et "geraldine" doit être 110%', ()
     getLovePercentageSync('melvin', 'geraldine');
 
 // Vérifier si le résultat est celui attendu
-expect(document.getElementById("percentage").innerText).toBe(`Percentage : 110 %`);
+expect(document.getElementById("percentage").innerText).toBe(110);
 });
 
