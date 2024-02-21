@@ -4,6 +4,9 @@ const path = require('path');
 const app = express();
 const port = 8080;
 
+// Serve static files from the 'public' directory
+app.use(express.static('public'));
+
 // Serve the HTML file to the client
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));

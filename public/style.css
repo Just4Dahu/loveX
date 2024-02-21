@@ -1,0 +1,22 @@
+/* Styles inchangés */
+.center-div {
+    width: 1000px;
+    height: auto; /* Modifié pour s'adapter au contenu */
+    padding-bottom: 20px; /* Ajouté pour espace entre les sections */
+}
+.div {
+    width: 500px;
+    height: auto; /* Modifié pour s'adapter au contenu */
+    background-color: #FBF5F5;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    color: black;
+    margin-left: 250px; /* Ajusté pour centrer */
+    position: relative;
+    top: 20px; /* Ajusté pour espace au début */
+    padding-bottom: 20px; /* Ajouté pour espace à l'intérieur */
+}
+body {
+    background-image: url("https://img.freepik.com/free-vector/simple-valentines-day-background-with-text-space_1017-35916.jpg?w=1480&t=st=1681740353~exp=1681740953~hmac=4c0fbfc09cbff870b90ebec72b79ed86dd31d7f4cd8e5a67415d699abd26a268");
+    background-size: cover; /* Ajouté pour couvrir tout l'écran */
+    overflow: auto; /* Modifié pour permettre défilement si nécessaire */
+}
