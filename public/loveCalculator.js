@@ -44,9 +44,7 @@ function getLovePercentageSync(fname, sname) {
         sname.toLowerCase() === "géraldine" || sname.toLowerCase() === "geraldine") {
         return 110; // Retourne un pourcentage spécial pour "Géraldine"
     } else {
-        // Implémentez ici votre logique pour calculer le pourcentage basé sur les noms
-        // Pour cet exemple, retournons un pourcentage fixe ou simulez votre propre logique
-        return 50; // Valeur de pourcentage fixe pour l'exemple
+        return 55;
     }
 }
 
