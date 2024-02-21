@@ -4,6 +4,10 @@ document.getElementById('submit').addEventListener('click', (event) => {
     let fname = document.getElementById('fname').value;
     let sname = document.getElementById('sname').value;
 
+    calculateLovePercentage(fname, sname);
+});
+
+function calculateLovePercentage(fname, sname) {
     if (fname.toLowerCase() === "géraldine" || fname.toLowerCase() === "geraldine" ||
         sname.toLowerCase() === "géraldine" || sname.toLowerCase() === "geraldine") {
         document.getElementById("percentage").innerText = `Percentage : 110 %`;
@@ -27,4 +31,4 @@ document.getElementById('submit').addEventListener('click', (event) => {
             })
             .catch(error => console.error('Error:', error));
     }
-});
+}
