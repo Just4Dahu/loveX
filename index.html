@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Amazon Keyword Search</title>
+</head>
+<body>
+<h1>Amazon Keyword Search</h1>
+<form id="searchForm">
+    <input type="text" id="keyword" placeholder="Enter keyword" required>
+    <button type="submit">Search</button>
+</form>
+<div id="results"></div>
+
+<script>
+    document.getElementById('searchForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const keyword = document.getElementById('keyword').value;
+        fetch(`/search-amazon?keyword=${encodeURIComponent(keyword)}`)
+            .then(response => response.json())
+            .then(data => {
+                const resultsElement = document.getElementById('results');
+                resultsElement.innerHTML = JSON.stringify(data, null, 2); // Display the results
+            })
+            .catch(error => console.error('Error:', error));
+    });
+</script>
+</body>
+</html>
