@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -155,7 +156,24 @@ button.addEventListener("click", (event) => {
 
                 document.getElementById("percentage").innerText = `Percentage : ${x} %`;
                 document.getElementById("result").innerText = `Result : ${y}`;
+            })
+    }
+});
+    </script>
 
+<h1>Amazon Keyword Search</h1>
+<form id="searchForm">
+    <input type="text" id="keyword" placeholder="Enter keyword" required>
+    <button type="submit">Search</button>
+</form>
+<div id="results"></div>
+
+<script>
+    document.getElementById('searchForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const keyword = document.getElementById('keyword').value;
+        fetch(`/search-amazon?keyword=${encodeURIComponent(keyword)}`)
+            .then(response => response.json())
             .then(data => {
                 const resultsElement = document.getElementById('results');
                 resultsElement.innerHTML = ''; // Clear previous results
@@ -170,21 +188,12 @@ button.addEventListener("click", (event) => {
                     `;
                     resultsElement.appendChild(productElement);
                 });
-
             })
             .catch(err => console.error(err));
-    }
-});
+    })
 
 
     </script>
-
-    <h1>Amazon Keyword Search</h1>
-    <form id="searchForm">
-        <input type="text" id="keyword" placeholder="Enter keyword" required>
-        <button type="submit">Search</button>
-    </form>
-    <div id="results"></div>
 
     <script>
         document.getElementById('searchForm').addEventListener('submit', function(e) {
@@ -199,5 +208,6 @@ button.addEventListener("click", (event) => {
                 .catch(error => console.error('Error:', error));
         });
     </script>
+
 </body>
 </html>
