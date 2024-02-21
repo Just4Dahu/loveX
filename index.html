@@ -8,6 +8,7 @@
 </head>
 <body>
 <style>
+    /* Styles inchangés */
     .center-div {
         width: 1000px;
         height: auto; /* Modifié pour s'adapter au contenu */
@@ -29,7 +30,6 @@
         background-size: cover; /* Ajouté pour couvrir tout l'écran */
         overflow: auto; /* Modifié pour permettre défilement si nécessaire */
     }
-    /* Styles restants inchangés */
 </style>
 
 <div class="center-div">
@@ -43,10 +43,13 @@
     </div>
 
     <h1 style="text-align:center; margin-top:20px;">Amazon Keyword Search</h1>
-    <form id="searchForm" style="text-align:center;">
-        <input type="text" id="keyword" placeholder="Enter keyword" required>
-        <button type="submit">Search</button>
-    </form>
+    <div id="searchButtons" style="text-align:center;">
+        <button class="searchBtn">Préservatif</button>
+        <button class="searchBtn">Menottes</button>
+        <button class="searchBtn">Roses</button>
+        <button class="searchBtn">Cravache</button>
+        <button class="searchBtn">Chocolats</button>
+    </div>
     <div id="results" style="text-align:center;"></div>
 </div>
 
@@ -82,28 +85,28 @@
         }
     });
 </script>
-
 <script>
-    document.getElementById('searchForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const keyword = document.getElementById('keyword').value;
-        fetch(`/search-amazon?keyword=${encodeURIComponent(keyword)}`)
-            .then(response => response.json())
-            .then(data => {
-                const resultsElement = document.getElementById('results');
-                resultsElement.innerHTML = ''; // Clear previous results
-                data.searchProductDetails.slice(0, 10).forEach(product => { // Get only the first 10 products
-                    const productElement = document.createElement('div');
-                    productElement.innerHTML = `
-                        <h3>${product.productDescription}</h3>
-                        <p>Price: ${product.price}€</p>
-                        <img src="${product.imgUrl}" alt="${product.productDescription}" style="width:100px;height:auto;">
-                        <a href="https://www.amazon.fr/dp/${product.asin}" target="_blank">View Product</a>
-                    `;
-                    resultsElement.appendChild(productElement);
-                });
-            })
-            .catch(error => console.error('Error:', error));
+    document.querySelectorAll('.searchBtn').forEach(button => {
+        button.addEventListener('click', function(e) {
+            const keyword = this.textContent; // Utilise le texte du bouton comme mot-clé
+            fetch(`/search-amazon?keyword=${encodeURIComponent(keyword)}`)
+                .then(response => response.json())
+                .then(data => {
+                    const resultsElement = document.getElementById('results');
+                    resultsElement.innerHTML = ''; // Efface les résultats précédents
+                    data.searchProductDetails.slice(0, 10).forEach(product => { // Prend uniquement les 10 premiers produits
+                        const productElement = document.createElement('div');
+                        productElement.innerHTML = `
+                            <h3>${product.productDescription}</h3>
+                            <p>Price: ${product.price}€</p>
+                            <img src="${product.imgUrl}" alt="${product.productDescription}" style="width:100px;height:auto;">
+                            <a href="https://www.amazon.fr/dp/${product.asin}" target="_blank">View Product</a>
+                        `;
+                        resultsElement.appendChild(productElement);
+                    });
+                })
+                .catch(error => console.error('Error:', error));
+        });
     });
 </script>
 
