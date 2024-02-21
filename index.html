@@ -20,7 +20,18 @@
             .then(response => response.json())
             .then(data => {
                 const resultsElement = document.getElementById('results');
-                resultsElement.innerHTML = JSON.stringify(data, null, 2); // Display the results
+                resultsElement.innerHTML = ''; // Clear previous results
+                const products = data.searchProductDetails.slice(0, 10); // Get only the first 10 products
+                products.forEach(product => {
+                    const productElement = document.createElement('div');
+                    productElement.innerHTML = `
+                        <h3>${product.productDescription}</h3>
+                        <p>Price: ${product.price}€</p>
+                        <img src="${product.imgUrl}" alt="${product.productDescription}" style="width:100px;height:auto;">
+                        <a href="https://www.amazon.fr/dp/${product.asin}" target="_blank">View Product</a>
+                    `;
+                    resultsElement.appendChild(productElement);
+                });
             })
             .catch(error => console.error('Error:', error));
     });
