@@ -1,6 +1,6 @@
-# Documentation des Fonctionnalités JavaScript pour Site Web
+# LoveX
 
-Ce document présente deux fonctionnalités JavaScript destinées à enrichir l'expérience utilisateur sur un site web : un calculateur d'affinité amoureuse et une fonction de recherche de produits sur Amazon. Il détaille ce que chaque fonctionnalité apporte, comment les intégrer, tester et exécuter localement.
+Ce document présente deux fonctionnalités JavaScript destinées à enrichir l'expérience utilisateur sur le site LoveX : un calculateur d'affinité amoureuse et une fonction de recherche de produits sur Amazon. Il détaille ce que chaque fonctionnalité apporte, comment les intégrer, tester et exécuter localement.
 
 ## Qu'est-ce que c'est ?
 
