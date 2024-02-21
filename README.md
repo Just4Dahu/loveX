@@ -1,72 +1,48 @@
-# LoveX
+# Documentation des Fonctionnalités JavaScript pour Site Web
 
-Ce README décrit deux fonctionnalités JavaScript développées pour enrichir l'expérience utilisateur sur un site web. La première est un calculateur d'affinité amoureuse basé sur les prénoms, et la seconde est une fonction de recherche de produits sur Amazon utilisant le texte d'un bouton comme requête de recherche.
+Ce document présente deux fonctionnalités JavaScript destinées à enrichir l'expérience utilisateur sur un site web : un calculateur d'affinité amoureuse et une fonction de recherche de produits sur Amazon. Il détaille ce que chaque fonctionnalité apporte, comment les intégrer, tester et exécuter localement.
 
-## Calculateur d'Affinité Amoureuse
+## Qu'est-ce que c'est ?
 
-### Description
-Cette fonctionnalité permet aux utilisateurs de calculer le pourcentage d'affinité amoureuse entre deux personnes en saisissant leurs prénoms. Un cas spécial est traité où, si l'un des prénoms entrés est "Géraldine" ou "Geraldine", le pourcentage affiché est automatiquement de 110 % avec un message personnalisé.
+### Calculateur d'Affinité Amoureuse
+Permet aux utilisateurs de saisir deux prénoms pour calculer leur pourcentage d'affinité amoureuse. Un cas spécial augmente ce pourcentage à 110 % si l'un des prénoms est "Géraldine" ou "Geraldine".
 
-### Comment ça marche
-L'utilisateur doit entrer deux prénoms dans les champs prévus à cet effet et appuyer sur le bouton de soumission pour voir le résultat. Le pourcentage d'affinité et un message résultant s'affichent à l'écran.
+### Recherche de Produits sur Amazon
+Utilise le texte d'un bouton comme mot-clé pour rechercher des produits correspondants sur Amazon, et affiche les résultats directement sur la page.
 
-### Code
-```javascript
-document.getElementById('submit').addEventListener('click', (event) => {
-    event.preventDefault();
-    let fname = document.getElementById('fname').value;
-    let sname = document.getElementById('sname').value;
-    calculateLovePercentage(fname, sname);
-});
+## Services / Fonctionnalités
 
-function calculateLovePercentage(fname, sname) {
-    if (fname.toLowerCase() === "géraldine" || fname.toLowerCase() === "geraldine" ||
-        sname.toLowerCase() === "géraldine" || sname.toLowerCase() === "geraldine") {
-        document.getElementById("percentage").innerText = `Percentage: 110%`;
-        document.getElementById("result").innerText = `Result: Une bonne nuit en perspective`;
-    } else {
-        // Logique pour la requête à l'API
-    }
-}
-```
+- **Calculateur d'Affinité Amoureuse** : Offre un moyen ludique et interactif d'explorer la compatibilité amoureuse entre deux personnes.
+- **Recherche de Produits sur Amazon** : Facilite la recherche de produits sans quitter la page courante, améliorant l'expérience utilisateur par une intégration transparente de contenu externe.
 
-## Recherche de Produits sur Amazon
+## Comment Construire
 
-### Description
-Cette fonctionnalité permet de rechercher des produits sur Amazon en utilisant le texte contenu dans un bouton comme mot-clé de recherche. Les résultats, incluant la description, le prix, une image, et un lien vers le produit sur Amazon, sont affichés directement sur la page.
+### Prérequis
+- Serveur web local ou en ligne pour héberger les fichiers.
+- Accès à une API externe pour la recherche de produits sur Amazon (facultatif pour le calculateur d'affinité, qui ne nécessite pas d'API externe).
 
-### Comment ça marche
-Les utilisateurs cliquent sur un bouton de recherche pour démarrer la recherche avec le texte du bouton comme mot-clé. Les 10 premiers résultats de produits sont affichés sur la page.
+### Intégration
+1. Ajouter le code JavaScript fourni dans votre projet HTML.
+2. S'assurer que les éléments HTML (champs de saisie, boutons) sont correctement identifiés dans le script.
 
-### Code : 
-```javascript
-function searchAmazonProducts(keyword) {
-    fetch(`/search-amazon?keyword=${encodeURIComponent(keyword)}`)
-        .then(response => response.json())
-        .then(data => {
-            const resultsElement = document.getElementById('results');
-            resultsElement.innerHTML = '';
-            data.searchProductDetails.slice(0, 10).forEach(product => {
-                const productElement = document.createElement('div');
-                productElement.innerHTML = `
-                    <h3>${product.productDescription}</h3>
-                    <p>Price: ${product.price}€</p>
-                    <img src="${product.imgUrl}" alt="${product.productDescription}" style="width:100px;height:auto;">
-                    <a href="https://www.amazon.fr/dp/${product.asin}" target="_blank">View Product</a>
-                `;
-                resultsElement.appendChild(productElement);
-            });
-        })
-        .catch(error => console.error('Error:', error));
-}
+## Comment Tester
 
-document.querySelectorAll('.searchBtn').forEach(button => {
-    button.addEventListener('click', function() {
-        const keyword = this.textContent;
-        searchAmazonProducts(keyword);
-    });
-});
-```
+### Calculateur d'Affinité Amoureuse
+1. Ouvrir la page contenant le formulaire du calculateur.
+2. Entrer différents prénoms dans les champs prévus et soumettre.
+3. Vérifier que le pourcentage et le message s'affichent correctement.
 
-Ces deux fonctionnalités améliorent considérablement l'interactivité et l'engagement des utilisateurs sur le site, offrant à la fois amusement et utilité.
+### Recherche de Produits sur Amazon
+1. Cliquer sur un bouton de recherche pour initier la recherche.
+2. Observer les résultats affichés et vérifier qu'ils correspondent au mot-clé utilisé.
 
+## Comment Exécuter Localement
+
+1. Assurez-vous d'avoir un environnement local capable de servir des fichiers HTML (par exemple, Apache, Nginx, ou un serveur local simple comme `http-server` en Node.js).
+2. Placez vos fichiers dans le répertoire racine de votre serveur.
+3. Accédez à votre serveur local via un navigateur web pour voir le projet en action.
+4. Pour la recherche de produits sur Amazon, assurez-vous que la requête proxy vers l'API Amazon est correctement configurée sur votre serveur.
+
+## Conclusion
+
+Ces fonctionnalités offrent des interactions dynamiques et pratiques pour les utilisateurs, en améliorant l'engagement et l'utilité d'un site web. Leur intégration nécessite une compréhension de base du développement web et de JavaScript.
