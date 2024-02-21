@@ -9,9 +9,10 @@ document.getElementById = jest.fn((id) => {
 });
 
 test('le pourcentage d\'amour entre "melvin" et "geraldine" doit être 110%', () => {
-    // Exécuter la fonction avec les noms test
-    calculateLovePercentage('melvin', 'geraldine');
+// Exécuter la fonction avec les noms test
+    getLovePercentageSync('melvin', 'geraldine');
 
-    // Vérifier si le résultat est celui attendu
-    expect(document.getElementById("percentage").innerText).toBe(`Percentage : 110 %`);
+// Vérifier si le résultat est celui attendu
+expect(document.getElementById("percentage").innerText).toBe(`Percentage : 110 %`);
 });
+

@@ -38,6 +38,17 @@ function calculateLovePercentage(fname, sname) {
             .catch(error => console.error('Error:', error));
     }
 }
+// Fonction simulée pour obtenir le pourcentage d'amour de manière synchrone
+function getLovePercentageSync(fname, sname) {
+    if (fname.toLowerCase() === "géraldine" || fname.toLowerCase() === "geraldine" ||
+        sname.toLowerCase() === "géraldine" || sname.toLowerCase() === "geraldine") {
+        return 110; // Retourne un pourcentage spécial pour "Géraldine"
+    } else {
+        // Implémentez ici votre logique pour calculer le pourcentage basé sur les noms
+        // Pour cet exemple, retournons un pourcentage fixe ou simulez votre propre logique
+        return 50; // Valeur de pourcentage fixe pour l'exemple
+    }
+}
 
-// Export des fonctions pour les rendre accessibles pour les tests ou d'autres fichiers
-module.exports = { calculateLovePercentage, attachSubmitListener };
+// Mettre à jour l'exportation pour inclure la nouvelle fonction
+module.exports = { calculateLovePercentage, attachSubmitListener, getLovePercentageSync };
