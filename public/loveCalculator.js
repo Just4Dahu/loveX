@@ -48,5 +48,9 @@ export function getLovePercentageAsync(fname, sname) {
     }
 }
 
+document.addEventListener('DOMContentLoaded', (event) => {
+    attachSubmitListener();
+});
+
 // Mettre à jour l'exportation pour inclure la nouvelle fonction
 export { calculateLovePercentage, attachSubmitListener };
