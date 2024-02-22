@@ -19,7 +19,8 @@
   "homepage": "https://github.com/Just4Dahu/loveX#readme",
   "dependencies": {
     "express": "^4.18.2",
-    "axios": "^1.6.7"
+    "axios": "^1.6.7",
+    "jest-environment-jsdom": "^29.7.0"
   },
   "jest": {
     "testEnvironment": "jsdom"
