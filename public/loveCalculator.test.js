@@ -1,4 +1,5 @@
-const { getLovePercentageSync } = require('./loveCalculator');
+import getLovePercentageSync from './loveCalculator';
+
 
 test('le pourcentage d\'amour entre "melvin" et "geraldine" doit être 110%', () => {
     // Exécuter la fonction avec les noms test et stocker le résultat

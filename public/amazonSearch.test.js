@@ -1,4 +1,4 @@
-const { checkApiResponse } = require('./amazonSearch'); // Assurez-vous que le chemin est correct
+import { checkApiResponse } from './amazonSearch.js';
 
 describe('checkApiResponse', () => {
     beforeEach(() => {

@@ -36,7 +36,7 @@ function checkApiResponse(keyword) {
 }
 
 // Exporter les fonctions pour les rendre accessibles pour les tests ou d'autres fichiers
-module.exports = { checkApiResponse };
+export { searchAmazonProducts, checkApiResponse };
 
 // Ajoute l'événement click aux boutons
 document.querySelectorAll('.searchBtn').forEach(button => {

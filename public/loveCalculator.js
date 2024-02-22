@@ -49,4 +49,4 @@ function getLovePercentageSync(fname, sname) {
 }
 
 // Mettre à jour l'exportation pour inclure la nouvelle fonction
-module.exports = { calculateLovePercentage, attachSubmitListener, getLovePercentageSync };
+export { calculateLovePercentage, attachSubmitListener, getLovePercentageSync };
