@@ -1,3 +1,4 @@
+// Définir la fonction searchAmazonProducts
 function searchAmazonProducts(keyword) {
     fetch(`/search-amazon?keyword=${encodeURIComponent(keyword)}`)
         .then(response => response.json())
@@ -17,6 +18,9 @@ function searchAmazonProducts(keyword) {
         })
         .catch(error => console.error('Error:', error));
 }
+
+// Exporter la fonction searchAmazonProducts pour l'utiliser dans d'autres fichiers, comme les fichiers de test
+module.exports = { searchAmazonProducts };
 
 // Ajoute l'événement click aux boutons
 document.querySelectorAll('.searchBtn').forEach(button => {
