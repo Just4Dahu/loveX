@@ -1,24 +1,27 @@
-describe('searchAmazonProducts', () => {
+const { checkApiResponse } = require('./amazonSearch'); // Assurez-vous que le chemin est correct
+
+describe('checkApiResponse', () => {
     beforeEach(() => {
-        // Réinitialiser les appels fetch mockés avant chaque test
         fetch.resetMocks();
-        // Préparer le DOM
-        document.body.innerHTML = '<div id="results"></div>';
     });
 
-    it('should update the DOM with product details if API returns data', async () => {
-        // Configurer fetch mock pour simuler une réponse de l'API
+    it('should return 1 if the API returns a response', async () => {
+        // Configurer fetch mock pour simuler une réponse de l'API positive
         fetch.mockResponseOnce(JSON.stringify({
             searchProductDetails: [
-                { productDescription: "Test Product", price: "10", imgUrl: "https://example.com/img.jpg", asin: "B00TEST" }
+                { productDescription: "Cle USB", price: "10", imgUrl: "https://example.com/img.jpg", asin: "B00TEST" }
             ]
         }));
 
-        // Supposons que searchAmazonProducts est une fonction asynchrone
-        await searchAmazonProducts("test product");
+        const response = await checkApiResponse("test product");
+        expect(response).toBe(1); // S'attend à ce que la fonction retourne 1
+    });
 
-        // Vérifier que le contenu attendu est présent dans le DOM
-        expect(document.getElementById('results').innerHTML).toContain("Test Product");
-        expect(fetch).toHaveBeenCalledTimes(1);
+    it('should return 0 if the API returns an unexpected response', async () => {
+        // Simuler une réponse inattendue ou vide de l'API
+        fetch.mockResponseOnce(JSON.stringify({}));
+
+        const response = await checkApiResponse("test product");
+        expect(response).toBe(0); // S'attend à ce que la fonction retourne 0
     });
 });
