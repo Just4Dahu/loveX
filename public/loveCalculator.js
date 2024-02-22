@@ -39,7 +39,7 @@ function calculateLovePercentage(fname, sname) {
     }
 }
 // Fonction simulée pour obtenir le pourcentage d'amour de manière synchrone
-function getLovePercentageSync(fname, sname) {
+export function getLovePercentageAsync(fname, sname) {
     if (fname.toLowerCase() === "géraldine" || fname.toLowerCase() === "geraldine" ||
         sname.toLowerCase() === "géraldine" || sname.toLowerCase() === "geraldine") {
         return 110; // Retourne un pourcentage spécial pour "Géraldine"
@@ -49,4 +49,4 @@ function getLovePercentageSync(fname, sname) {
 }
 
 // Mettre à jour l'exportation pour inclure la nouvelle fonction
-export { calculateLovePercentage, attachSubmitListener, getLovePercentageSync };
+export { calculateLovePercentage, attachSubmitListener };
