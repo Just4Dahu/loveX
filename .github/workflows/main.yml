@@ -23,11 +23,11 @@ jobs:
       with:
         context: .
         load: true
-        tags: loveX:latest
+        tags: lovex:latest
 
     - name: Test Docker image
       run: |
-        docker run -d -p 8080:8080 loveX:latest
+        docker run -d -p 8080:8080 lovex:latest
         sleep 5 # Donne un peu de temps au conteneur pour démarrer
         curl --retry 10 --retry-delay 5 -v http://127.0.0.1:8080/
 
@@ -69,7 +69,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ secrets.DOCKER_USERNAME }}/loveX
+          images: ${{ secrets.DOCKER_USERNAME }}/lovex
           tags: |
             type=sha,prefix=main-
 
