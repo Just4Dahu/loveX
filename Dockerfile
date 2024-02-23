@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 8080
 
 # Commande pour exécuter l'application
-CMD ["npm", "start"]
+CMD ["node", "app.js"]
