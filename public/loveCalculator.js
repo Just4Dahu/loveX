@@ -1,12 +1,18 @@
-document.getElementById('submit').addEventListener('click', (event) => {
-    event.preventDefault();
+// loveCalculator.js
 
-    let fname = document.getElementById('fname').value;
-    let sname = document.getElementById('sname').value;
+// Fonction principale pour attacher l'événement au bouton submit
+function attachSubmitListener() {
+    document.getElementById('submit').addEventListener('click', (event) => {
+        event.preventDefault();
 
-    calculateLovePercentage(fname, sname);
-});
+        let fname = document.getElementById('fname').value;
+        let sname = document.getElementById('sname').value;
 
+        calculateLovePercentage(fname, sname);
+    });
+}
+
+// Fonction pour calculer le pourcentage d'amour
 function calculateLovePercentage(fname, sname) {
     if (fname.toLowerCase() === "géraldine" || fname.toLowerCase() === "geraldine" ||
         sname.toLowerCase() === "géraldine" || sname.toLowerCase() === "geraldine") {
@@ -32,3 +38,19 @@ function calculateLovePercentage(fname, sname) {
             .catch(error => console.error('Error:', error));
     }
 }
+// Fonction simulée pour obtenir le pourcentage d'amour de manière synchrone
+export function getLovePercentageAsync(fname, sname) {
+    if (fname.toLowerCase() === "géraldine" || fname.toLowerCase() === "geraldine" ||
+        sname.toLowerCase() === "géraldine" || sname.toLowerCase() === "geraldine") {
+        return 110; // Retourne un pourcentage spécial pour "Géraldine"
+    } else {
+        return 55;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    attachSubmitListener();
+});
+
+// Mettre à jour l'exportation pour inclure la nouvelle fonction
+export { calculateLovePercentage, attachSubmitListener };

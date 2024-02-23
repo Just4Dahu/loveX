@@ -1,3 +1,4 @@
+// Définir la fonction searchAmazonProducts
 function searchAmazonProducts(keyword) {
     fetch(`/search-amazon?keyword=${encodeURIComponent(keyword)}`)
         .then(response => response.json())
@@ -17,6 +18,25 @@ function searchAmazonProducts(keyword) {
         })
         .catch(error => console.error('Error:', error));
 }
+
+function checkApiResponse(keyword) {
+    return fetch(`/search-amazon?keyword=${encodeURIComponent(keyword)}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data && data.searchProductDetails) {
+                return 1; // API a renvoyé une réponse
+            } else {
+                return 0; // Réponse inattendue de l'API
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            return 0; // Erreur lors de la requête à l'API
+        });
+}
+
+// Exporter les fonctions pour les rendre accessibles pour les tests ou d'autres fichiers
+export { searchAmazonProducts, checkApiResponse };
 
 // Ajoute l'événement click aux boutons
 document.querySelectorAll('.searchBtn').forEach(button => {
