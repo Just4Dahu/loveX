@@ -38,10 +38,10 @@ Utilise le texte d'un bouton comme mot-clé pour rechercher des produits corresp
 
 ## Comment Exécuter Localement
 
-1. Assurez-vous d'avoir un environnement local capable de servir des fichiers HTML (par exemple, Apache, Nginx, ou un serveur local simple comme `http-server` en Node.js).
-2. Placez vos fichiers dans le répertoire racine de votre serveur.
-3. Accédez à votre serveur local via un navigateur web pour voir le projet en action.
-4. Pour la recherche de produits sur Amazon, assurez-vous que la requête proxy vers l'API Amazon est correctement configurée sur votre serveur.
+1. Installer NodeJS 14 minimum
+2. Faire un clone du repository
+3. Dans le fichier local, faire `npm install`
+4. Lancer le serveur avec `node app.js` en étant dans le dossier. 
 
 ## Conclusion
 
